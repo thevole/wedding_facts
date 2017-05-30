@@ -5,12 +5,10 @@ var Alexa = require('alexa-sdk');
 //TODO: The items below this comment need your attention.
 //=========================================================================================================================================
 
-//Replace with your app ID (OPTIONAL).  You can find this value at the top of your skill's page on http://developer.amazon.com.  
-//Make sure to enclose your value in quotes, like this: var APP_ID = "amzn1.ask.skill.bb4045e6-b3e8-4133-b650-72923c5980f1";
 var APP_ID = 'amzn1.ask.skill.1cc65a46-cbf1-485f-8285-c624a0f46669';
 
 var SKILL_NAME = "Wedding Facts";
-var GET_FACT_MESSAGE = "Here's your titbit about the happy couple: ";
+var GET_FACT_MESSAGE = "Here's your fun fact about the happy couple: ";
 var HELP_MESSAGE = "You can say tell me a wedding fact, or, you can say exit... What can I help you with?";
 var HELP_REPROMPT = "What can I help you with?";
 var STOP_MESSAGE = "Goodbye!";
