@@ -4,6 +4,7 @@ const APP_ID = 'amzn1.ask.skill.1cc65a46-cbf1-485f-8285-c624a0f46669';
 
 const SKILL_NAME = "Wedding Facts";
 const GET_FACT_MESSAGE = "Fact: ";
+const GET_FACT_LIST_MESSAGE = "Here is a list of facts about Monica and Adam: ";
 const HELP_MESSAGE = "You can say tell me a fact about Monica or Adam, or, you can say exit... What can I help you with?";
 const HELP_REPROMPT = "What can I help you with?";
 const STOP_MESSAGE = "Goodbye!";
@@ -20,8 +21,9 @@ const data = [
   "Adam used to leave lethal pointy things on the bedroom floor so that when he had a bad dream and you ran into the room in the dark you would step on them and get a bleeding foot",
   "Career choices. Before becoming a videographer, Adam wanted to be a snatch doctor",
   "It’s Adam's fault that he had twin siblings! When his mother and father asked him if he wanted a brother or sister he said both, and he wanted to call them Jack and Jill.",
-  "He drew pictures at school of all the Volerich family secrets - like the time that Jack pooped in the tub",
-  "His first fries were from McDonalds in the Harlequin Center Watford. His eyes went up into his head and from then on he decided only junk food was to be eaten."
+  "Adam drew pictures at school of all the Volerich family secrets - like the time that Jack pooped in the tub",
+  "Adam's first fries were from McDonalds in the Harlequin Center Watford. His eyes went up into his head and from then on he decided only junk food was to be eaten.",
+  "Adam was awarded the prestigious Northwood Preparatory School Monitors Award for his tenure as a junior school monitor during the period April to July 1998."
 ];
 
 exports.handler = function(event, context, callback) {
@@ -34,6 +36,17 @@ exports.handler = function(event, context, callback) {
 const handlers = {
   'LaunchRequest': function () {
     this.emit('GetNewFactIntent');
+  },
+  'GetNewFactListIntent': function () {
+    const factArr = data;
+    let speechOutput = GET_FACT_LIST_MESSAGE;
+    let facts = '';
+    for (let i = 0; i < factArr.length; i++) {
+      const fact = factArr[i];
+      facts += fact + ' ';
+      speechOutput += GET_FACT_MESSAGE + fact + " ";
+    }
+    this.emit(':tellWithCard', speechOutput, SKILL_NAME, facts)
   },
   'GetNewFactIntent': function () {
     const factArr = data;
