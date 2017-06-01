@@ -1,51 +1,50 @@
-'use strict';
-var Alexa = require('alexa-sdk');
+const Alexa = require('alexa-sdk');
 
-//=========================================================================================================================================
-//TODO: The items below this comment need your attention.
-//=========================================================================================================================================
+const APP_ID = 'amzn1.ask.skill.1cc65a46-cbf1-485f-8285-c624a0f46669';
 
-var APP_ID = 'amzn1.ask.skill.1cc65a46-cbf1-485f-8285-c624a0f46669';
+const SKILL_NAME = "Wedding Facts";
+const GET_FACT_MESSAGE = "Fact: ";
+const HELP_MESSAGE = "You can say tell me a fact about Monica or Adam, or, you can say exit... What can I help you with?";
+const HELP_REPROMPT = "What can I help you with?";
+const STOP_MESSAGE = "Goodbye!";
 
-var SKILL_NAME = "Wedding Facts";
-var GET_FACT_MESSAGE = "Here's your fun fact about the happy couple: ";
-var HELP_MESSAGE = "You can say tell me a wedding fact, or, you can say exit... What can I help you with?";
-var HELP_REPROMPT = "What can I help you with?";
-var STOP_MESSAGE = "Goodbye!";
-
-//=========================================================================================================================================
-//TODO: Replace this data with your own.  You can find translations of this data at http://github.com/alexa/skill-sample-node-js-fact/data
-//=========================================================================================================================================
-var data = [
+const data = [
   "Adam won a prize for being a beautiful baby.",
   "Adam's middle name is Nathan - named after his great grandfather Nat.",
-  "Adam wanted to enroll at West Point to become a power ranger"
+  "Adam wanted to enroll at West Point to become a Power Ranger",
+  "Monica and Dani, her new mother-in-law, share a birthday",
+  "When Adam was 5 years old he decided to rescind his membership of the Peter Pan Society and concentrated instead on becoming Tommy the Green Power Ranger. He practiced his Ninja moves on unfortunate elderly ladies at the supermarket.",
+  "Adam’s clothes always used to magically fall off when he ate ice cream.",
+  "Monica used to chase and bully Adam (with help and permission from his cousin Emma) when they were in the third grade. They threw his hat into the “witch’s” garden and made Adam cry!",
+  "Adam’s first superhero was 'Pilla the Caterpillar', a story he forced his nana to make up and tell him",
+  "Adam used to leave lethal pointy things on the bedroom floor so that when he had a bad dream and you ran into the room in the dark you would step on them and get a bleeding foot",
+  "Career choices. Before becoming a videographer, Adam wanted to be a snatch doctor",
+  "It’s Adam's fault that he had twin siblings! When his mother and father asked him if he wanted a brother or sister he said both, and he wanted to call them Jack and Jill.",
+  "He drew pictures at school of all the Volerich family secrets - like the time that Jack pooped in the tub",
+  "His first fries were from McDonalds in the Harlequin Center Watford. His eyes went up into his head and from then on he decided only junk food was to be eaten."
 ];
 
-//=========================================================================================================================================
-//Editing anything below this line might break your skill.  
-//=========================================================================================================================================
 exports.handler = function(event, context, callback) {
-  var alexa = Alexa.handler(event, context);
+  const alexa = Alexa.handler(event, context);
   alexa.APP_ID = APP_ID;
   alexa.registerHandlers(handlers);
   alexa.execute();
 };
 
-var handlers = {
+const handlers = {
   'LaunchRequest': function () {
     this.emit('GetNewFactIntent');
   },
   'GetNewFactIntent': function () {
-    var factArr = data;
-    var factIndex = Math.floor(Math.random() * factArr.length);
-    var randomFact = factArr[factIndex];
-    var speechOutput = GET_FACT_MESSAGE + randomFact;
+    const factArr = data;
+    const factIndex = Math.floor(Math.random() * factArr.length);
+    const randomFact = factArr[factIndex];
+    const speechOutput = GET_FACT_MESSAGE + randomFact;
     this.emit(':tellWithCard', speechOutput, SKILL_NAME, randomFact)
   },
   'AMAZON.HelpIntent': function () {
-    var speechOutput = HELP_MESSAGE;
-    var reprompt = HELP_REPROMPT;
+    const speechOutput = HELP_MESSAGE;
+    const reprompt = HELP_REPROMPT;
     this.emit(':ask', speechOutput, reprompt);
   },
   'AMAZON.CancelIntent': function () {
@@ -55,3 +54,4 @@ var handlers = {
     this.emit(':tell', STOP_MESSAGE);
   }
 };
+
