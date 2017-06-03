@@ -1,4 +1,5 @@
 const Alexa = require('alexa-sdk');
+const Rx = require('rxjs/Rx');
 
 const APP_ID = 'amzn1.ask.skill.1cc65a46-cbf1-485f-8285-c624a0f46669';
 

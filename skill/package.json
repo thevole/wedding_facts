@@ -1,0 +1,23 @@
+{
+  "name": "wedding_facts",
+  "version": "1.0.0",
+  "description": "An Alexa custom skill for Adam & Monica's wedding",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thevole/wedding_facts.git"
+  },
+  "author": "Martin Volerich <martin@volerich.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thevole/wedding_facts/issues"
+  },
+  "homepage": "https://github.com/thevole/wedding_facts#readme",
+  "dependencies": {
+    "alexa-sdk": "^1.0.9",
+    "rxjs": "^5.4.0"
+  }
+}
