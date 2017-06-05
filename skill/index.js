@@ -8,7 +8,7 @@ const GET_FACT_MESSAGE = "Fact: ";
 const GET_FACT_LIST_MESSAGE = "Here is a list of facts about Monica and Adam: ";
 const HELP_MESSAGE = "You can say tell me a fact about Monica or Adam, or, you can say stop to exit... What can I help you with?";
 const FACT_TRAILER = 'Ask for another fact.'
-const HELP_REPROMPT = "What can I help you with?";
+const HELP_REPROMPT = "Ask for a fact or say stop.";
 const STOP_MESSAGE = "Goodbye and Mazal Tov to you all!!";
 
 const data = {
@@ -93,10 +93,8 @@ const handlers = {
     this.emit(':ask', speechOutput, reprompt);
   },
   'PersonFactIntent': function () {
-    console.log(this);
     const who = this.event.request.intent.slots.who.value.toLowerCase();
     const factArr = data[who];
-    console.log('factArr: ', factArr, factArr.length);
     const factIndex = Math.floor(Math.random() * factArr.length);
     const randomFact = factArr[factIndex];
     const speechOutput = GET_FACT_MESSAGE + randomFact;
@@ -115,7 +113,6 @@ const handlers = {
   },
   'NewFactIntent': function () {
     const factArr = data['adam'].concat(data['monica']);
-    console.log('factArr: ', factArr, factArr.length);
     const factIndex = Math.floor(Math.random() * factArr.length);
     const randomFact = factArr[factIndex];
     const speechOutput = GET_FACT_MESSAGE + randomFact;
@@ -133,7 +130,9 @@ const handlers = {
     this.emit(':tell', STOP_MESSAGE);
   },
   'Unhandled': function() {
-    this.emit(':ask', 'Sorry, I didn\'t get that. ' + HELP_MESSAGE, HELP_REPROMPT);
+    const speechOutput = HELP_MESSAGE;
+    const reprompt = HELP_REPROMPT;
+    this.emit(':ask', "Sorry, I didn't get that. ", reprompt);
   }
 };
 
