@@ -1,14 +1,15 @@
 const Alexa = require('alexa-sdk');
 const Rx = require('rxjs/Rx');
 
-const APP_ID = 'amzn1.ask.skill.1cc65a46-cbf1-485f-8285-c624a0f46669';
+const APP_ID = 'amzn1.ask.skill.232023d3-48f5-46f3-95cf-26acaef12546';
 
-const SKILL_NAME = "Wedding Facts";
+const SKILL_NAME = "Monica and Adam's Wedding";
 const GET_FACT_MESSAGE = "Fact: ";
 const GET_FACT_LIST_MESSAGE = "Here is a list of facts about Monica and Adam: ";
-const HELP_MESSAGE = "You can say tell me a fact about Monica or Adam, or, you can say exit... What can I help you with?";
+const HELP_MESSAGE = "You can say tell me a fact about Monica or Adam, or, you can say stop to exit... What can I help you with?";
+const FACT_TRAILER = 'Ask for another fact.'
 const HELP_REPROMPT = "What can I help you with?";
-const STOP_MESSAGE = "Goodbye!";
+const STOP_MESSAGE = "Goodbye and Mazal Tov!!";
 
 const data = {
   "adam": [
@@ -40,14 +41,16 @@ exports.handler = function(event, context, callback) {
 
 const handlers = {
   'LaunchRequest': function () {
-    this.emit('GetNewFactIntent');
+    const speechOutput = "Welcome to Monica and Adam's Wedding Celebration. " + HELP_MESSAGE;
+    const reprompt = HELP_REPROMPT;
+    this.emit(':ask', speechOutput, reprompt);
   },
   'GetNewFactPersonIntent': function () {
     console.log(this);
     const who = this.event.request.intent.slots.who.value;
     this.emit(':tell', "Here is a person fact about " + who + '.');
   },
-  'GetNewFactListIntent': function () {
+  'ListFactsIntent': function () {
     const factArr = data['monica'].concat(data['adam']);
     let speechOutput = GET_FACT_LIST_MESSAGE;
     let facts = '';
@@ -58,13 +61,13 @@ const handlers = {
     }
     this.emit(':tellWithCard', speechOutput, SKILL_NAME, facts)
   },
-  'GetNewFactIntent': function () {
+  'NewFactIntent': function () {
     const factArr = data['adam'].concat(data['monica']);
     console.log('factArr: ', factArr, factArr.length);
     const factIndex = Math.floor(Math.random() * factArr.length);
     const randomFact = factArr[factIndex];
     const speechOutput = GET_FACT_MESSAGE + randomFact;
-    this.emit(':tellWithCard', speechOutput, SKILL_NAME, randomFact)
+    this.emit(':askWithCard', speechOutput, HELP_MESSAGE, SKILL_NAME, randomFact)
   },
   'AMAZON.HelpIntent': function () {
     const speechOutput = HELP_MESSAGE;
@@ -76,6 +79,9 @@ const handlers = {
   },
   'AMAZON.StopIntent': function () {
     this.emit(':tell', STOP_MESSAGE);
+  },
+  'Unhandled': function() {
+    this.emit(':ask', 'Sorry, I didn\'t get that. ' + HELP_MESSAGE, HELP_REPROMPT);
   }
 };
 
