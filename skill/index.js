@@ -9,7 +9,7 @@ const GET_FACT_LIST_MESSAGE = "Here is a list of facts about Monica and Adam: ";
 const HELP_MESSAGE = "You can say tell me a fact about Monica or Adam, or, you can say stop to exit... What can I help you with?";
 const FACT_TRAILER = 'Ask for another fact.'
 const HELP_REPROMPT = "What can I help you with?";
-const STOP_MESSAGE = "Goodbye and Mazal Tov!!";
+const STOP_MESSAGE = "Goodbye and Mazal Tov to you all!!";
 
 const data = {
   "adam": [
@@ -36,7 +36,7 @@ const data = {
     "Monica's mom, Tassana, first discovered monica was OCD when she would keep tying her shoelaces till both loops & both tails were even & perfectly symmetrical.  This could take forever. ", 
     " Monica realized that she was destined to save the world when the movie 'The Land Before Time' inspired her to save the dinosaurs. Then 'Free Willy' had her saving the whales.  Yale got her to want to save the humans  & upon graduation awarded her their 'most likely to end world hunger' prize. ",
     "Monica's first failure was when she got rejected from Elizabeth Morrow kindergarten.  While awaiting her interview, she started building a zoo.  When it was her turn to be interviewed, she said 'No I'm not ready yet!'  She was not done building her zoo.  They knew instantly she would be a difficult student!  Rumors also abounded about her dancing on the table during the interview.  Overly exuberant? ", 
-    "Monice was kicked out of her ballet class!  She would narrate a story while dancing.  When told ballet was not a verbal activity, she started making sound effects instead.  Needless to say, that did not go over very well. ", 
+    "Monica was kicked out of her ballet class!  She would narrate a story while dancing.  When told ballet was not a verbal activity, she started making sound effects instead.  Needless to say, that did not go over very well. ", 
     "One time when Aaron threw a party at the house while we were out, a friend rushed in to warn him about a imminent threat.  Aaron asked, 'Are the cops coming?'  His friend replied, 'No, it's worse. It's your sister!!!!'",  
     "Monica once picked out a crazy cat for Grandma & named her Glitter.  Glitter attacked all grandma's grandkids & had to be locked up whenever they visited!! ", 
     "Monica was reprimanded in kindergarten for yawning really loudly.  Her response was:  'but my daddy does it all the time?!'",
@@ -92,10 +92,15 @@ const handlers = {
     const reprompt = HELP_REPROMPT;
     this.emit(':ask', speechOutput, reprompt);
   },
-  'GetNewFactPersonIntent': function () {
+  'PersonFactIntent': function () {
     console.log(this);
-    const who = this.event.request.intent.slots.who.value;
-    this.emit(':tell', "Here is a person fact about " + who + '.');
+    const who = this.event.request.intent.slots.who.value.toLowerCase();
+    const factArr = data[who];
+    console.log('factArr: ', factArr, factArr.length);
+    const factIndex = Math.floor(Math.random() * factArr.length);
+    const randomFact = factArr[factIndex];
+    const speechOutput = GET_FACT_MESSAGE + randomFact;
+    this.emit(':askWithCard', speechOutput, HELP_MESSAGE, SKILL_NAME, randomFact)
   },
   'ListFactsIntent': function () {
     const factArr = data['monica'].concat(data['adam']);
