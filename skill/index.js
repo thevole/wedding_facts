@@ -94,22 +94,17 @@ const handlers = {
   },
   'PersonFactIntent': function () {
     const who = this.event.request.intent.slots.who.value.toLowerCase();
-    const factArr = data[who];
-    const factIndex = Math.floor(Math.random() * factArr.length);
-    const randomFact = factArr[factIndex];
-    const speechOutput = GET_FACT_MESSAGE + randomFact;
-    this.emit(':askWithCard', speechOutput, HELP_MESSAGE, SKILL_NAME, randomFact)
-  },
-  'ListFactsIntent': function () {
-    const factArr = data['monica'].concat(data['adam']);
-    let speechOutput = GET_FACT_LIST_MESSAGE;
-    let facts = '';
-    for (let i = 0; i < factArr.length; i++) {
-      const fact = factArr[i];
-      facts += fact + ' ';
-      speechOutput += GET_FACT_MESSAGE + fact + " ";
+    if (who !== 'adam' && who !== 'monica') {
+      const speechOutput = HELP_MESSAGE;
+      const reprompt = HELP_REPROMPT;
+      this.emit(':ask', "Sorry, I didn't get that. " + HELP_MESSAGE, reprompt);
+    } else {
+      const factArr = data[who];
+      const factIndex = Math.floor(Math.random() * factArr.length);
+      const randomFact = factArr[factIndex];
+      const speechOutput = GET_FACT_MESSAGE + randomFact;
+      this.emit(':askWithCard', speechOutput, HELP_MESSAGE, SKILL_NAME, randomFact)
     }
-    this.emit(':tellWithCard', speechOutput, SKILL_NAME, facts)
   },
   'NewFactIntent': function () {
     const factArr = data['adam'].concat(data['monica']);
