@@ -7,8 +7,8 @@ const SKILL_NAME = "Monica and Adam's Wedding";
 const GET_FACT_MESSAGE = "Fact: ";
 const GET_FACT_LIST_MESSAGE = "Here is a list of facts about Monica and Adam: ";
 const HELP_MESSAGE = "You can say tell me a fact about Monica or Adam, or, you can say stop to exit... What can I help you with?";
-const FACT_TRAILER = 'Ask for another fact.'
-const HELP_REPROMPT = "Ask for a fact or say stop.";
+const FACT_TRAILER = 'Ask for another fact or say stop to exit.'
+const HELP_REPROMPT = "Ask for a fact or say stop to exit.";
 const STOP_MESSAGE = "Goodbye and Mazal Tov to you all!!";
 
 const data = {
@@ -102,16 +102,16 @@ const handlers = {
       const factArr = data[who];
       const factIndex = Math.floor(Math.random() * factArr.length);
       const randomFact = factArr[factIndex];
-      const speechOutput = GET_FACT_MESSAGE + randomFact;
-      this.emit(':askWithCard', speechOutput, HELP_MESSAGE, SKILL_NAME, randomFact)
+      const speechOutput = GET_FACT_MESSAGE + randomFact + '  ' + FACT_TRAILER;
+      this.emit(':askWithCard', speechOutput, HELP_MESSAGE, SKILL_NAME, randomFact);
     }
   },
   'NewFactIntent': function () {
     const factArr = data['adam'].concat(data['monica']);
     const factIndex = Math.floor(Math.random() * factArr.length);
     const randomFact = factArr[factIndex];
-    const speechOutput = GET_FACT_MESSAGE + randomFact;
-    this.emit(':askWithCard', speechOutput, HELP_MESSAGE, SKILL_NAME, randomFact)
+    const speechOutput = GET_FACT_MESSAGE + randomFact + '  ' + FACT_TRAILER;
+    this.emit(':askWithCard', speechOutput, HELP_MESSAGE, SKILL_NAME, randomFact);
   },
   'AMAZON.HelpIntent': function () {
     const speechOutput = HELP_MESSAGE;
