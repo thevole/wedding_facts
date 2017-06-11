@@ -1,5 +1,4 @@
 const Alexa = require('alexa-sdk');
-const Rx = require('rxjs/Rx');
 
 const APP_ID = 'amzn1.ask.skill.232023d3-48f5-46f3-95cf-26acaef12546';
 
@@ -10,6 +9,7 @@ const HELP_MESSAGE = "You can say tell me a fact about Monica or Adam, or, you c
 const FACT_TRAILER = 'Ask for another fact or say stop to exit.'
 const HELP_REPROMPT = "Ask for a fact or say stop to exit.";
 const STOP_MESSAGE = "Goodbye and Mazal Tov to you all!!";
+const THATS_ALL_MESSAGE = 'That is all of the interesting information that I currently have. Thanks for listening and come back soon. Have a wonderful day.';
 
 const data = {
   "adam": [
@@ -80,8 +80,47 @@ const data = {
 exports.handler = function(event, context, callback) {
   let alexa = Alexa.handler(event, context);
   alexa.appId = APP_ID;
-  alexa.registerHandlers(handlers);
+  alexa.registerHandlers(newSessionHandlers, handlers);
   alexa.execute();
+};
+
+const readFact = function(who, context) {
+    if (who !== 'adam' && who !== 'monica') {
+      const speechOutput = HELP_MESSAGE;
+      const reprompt = HELP_REPROMPT;
+      context.emit(':ask', "Sorry, I didn't get that. " + HELP_MESSAGE, reprompt);
+    } else {
+      console.log('totalCount', context.attributes['totalFactCount']);
+      const played = context.attributes['factsPlayed'] || [];
+      if (played.length === context.attributes['totalFactCount']) {
+        context.emit(':tell', THATS_ALL_MESSAGE);
+      } else {
+        const factArr = data[who];
+        console.log('Played:', played);
+        const length = factArr.length;
+        let randomFact = '';
+        do {
+          const factIndex = Math.floor(Math.random() * length);
+          randomFact = factArr[factIndex];
+        } while (played.indexOf(randomFact) >= 0);
+        context.attributes['factsPlayed'].push(randomFact);
+        console.log("Fact: ", randomFact);
+        const speechOutput = GET_FACT_MESSAGE + randomFact + '  ' + FACT_TRAILER;
+        context.emit(':askWithCard', speechOutput, HELP_MESSAGE, SKILL_NAME, randomFact);
+      }
+    }
+}
+
+const newSessionHandlers = {
+  'NewSession' : function() {
+    if (Object.keys(this.attributes).length === 0) {
+      this.attributes['factsPlayed'] = [];
+      this.attributes['totalFactCount'] = data['monica'].length + data['adam'].length;
+    }
+    const speechOutput = "Welcome to Monica and Adam's Wonderful Wedding Celebration. " + HELP_MESSAGE;
+    const reprompt = HELP_REPROMPT;
+    this.emit(':ask', speechOutput, reprompt);
+  }
 };
 
 const handlers = {
@@ -92,25 +131,13 @@ const handlers = {
   },
   'PersonFactIntent': function () {
     const who = this.event.request.intent.slots.who.value.toLowerCase();
-    if (who !== 'adam' && who !== 'monica') {
-      const speechOutput = HELP_MESSAGE;
-      const reprompt = HELP_REPROMPT;
-      this.emit(':ask', "Sorry, I didn't get that. " + HELP_MESSAGE, reprompt);
-    } else {
-      const factArr = data[who];
-      const factIndex = Math.floor(Math.random() * factArr.length);
-      const randomFact = factArr[factIndex];
-      console.log("Fact: ", randomFact);
-      const speechOutput = GET_FACT_MESSAGE + randomFact + '  ' + FACT_TRAILER;
-      this.emit(':askWithCard', speechOutput, HELP_MESSAGE, SKILL_NAME, randomFact);
-    }
+    readFact(who, this);
   },
   'NewFactIntent': function () {
-    const factArr = data['adam'].concat(data['monica']);
-    const factIndex = Math.floor(Math.random() * factArr.length);
-    const randomFact = factArr[factIndex];
-    const speechOutput = GET_FACT_MESSAGE + randomFact + '  ' + FACT_TRAILER;
-    this.emit(':askWithCard', speechOutput, HELP_MESSAGE, SKILL_NAME, randomFact);
+    const whoArr = ['adam', 'monica'];
+    const whoIndex = Math.floor(Math.random() * whoArr.length);
+    const randomWho = whoArr[whoIndex];
+    readFact(randomWho, this);
   },
   'AMAZON.HelpIntent': function () {
     const speechOutput = HELP_MESSAGE;
