@@ -4,8 +4,7 @@ const APP_ID = 'amzn1.ask.skill.232023d3-48f5-46f3-95cf-26acaef12546';
 
 const SKILL_NAME = "Monica and Adam's Wedding";
 const GET_FACT_MESSAGE = "Fact: ";
-const GET_FACT_LIST_MESSAGE = "Here is a list of facts about Monica and Adam: ";
-const HELP_MESSAGE = "You can say tell me a fact about Monica or Adam, or, you can say stop to exit... What can I help you with?";
+const HELP_MESSAGE = "You can say tell me a fact about Monica or Adam, ask for a list of facts, or, you can say stop to exit... What can I help you with?";
 const FACT_TRAILER = 'Ask for another fact or say stop to exit.'
 const HELP_REPROMPT = "Ask for a fact or say stop to exit.";
 const STOP_MESSAGE = "Goodbye and Mazal Tov to you all!!";
@@ -13,15 +12,16 @@ const THATS_ALL_MESSAGE = 'That is all of the interesting information that I cur
 
 const data = {
   "adam": [
-    "Adam won a prize for being a beautiful baby.",
+    "Adam won a prize for being a beautiful baby and smiling angelically.",
     "Adam's middle name is Nathan - named after his great grandfather Nat.",
+    "Adam was once a proud Junior Hornet who attended every Watford FC Saturday soccer game. He was born in the hospital next door to Vicarage Road, the sacred home of Watford FC.",
     "Adam wanted to enroll at West Point to become a Power Ranger.",
     "When Adam was 5 years old he decided to rescind his membership of the Peter Pan Society and concentrated instead on becoming Tommy the Green Power Ranger. He practiced his Ninja moves on unfortunate elderly ladies at the supermarket.",
-    "Adam’s clothes always used to magically fall off when he ate ice cream.",
+    "Adam’s clothes always used to magically fall off when he ate ice cream. His mum never wanted to do the clothes washing so it was just easier to make him take his clothes off when he ate an ice cream bar.",
     "Monica used to chase and bully Adam (with help and permission from his cousin Emma) when they were in the third grade. They threw his hat into the “witch’s” garden and made Adam cry!",
     "Adam’s first superhero was 'Pilla the Caterpillar', a story he forced his nana to make up and tell him.",
     "Adam used to leave lethal pointy things on the bedroom floor so that when he had a bad dream and you ran into the room in the dark you would step on them and get a bleeding foot.",
-    "Career choices. Before becoming a videographer, Adam wanted to be a snatch doctor.",
+    "Career choices. Before becoming a cinematographer, Adam wanted to be a doctor of snatches.",
     "It’s Adam's fault that he had twin siblings! When his mother and father asked him if he wanted a brother or sister he said both, and he wanted to call them Jack and Jill.",
     "Adam drew pictures at school of all the Volerich family secrets - like the time that Jack pooped in the tub.",
     "Adam's first fries were from McDonalds in the Harlequin Center Watford. His eyes went up into his head and from then on he decided only junk food was to be eaten.",
@@ -128,6 +128,30 @@ const handlers = {
     const speechOutput = "Welcome to Monica and Adam's Wedding Celebration. " + HELP_MESSAGE;
     const reprompt = HELP_REPROMPT;
     this.emit(':ask', speechOutput, reprompt);
+  },
+  'ListFactsIntent': function() {
+    console.log(this.event.request.intent.slots);
+    const numberSpoken = this.event.request.intent.slots.number.value;
+    let number = Number.parseInt(numberSpoken);
+    if (!number || number <= 0) {
+      number = 3
+    }
+    const factArr = data['adam'].concat(data['monica']);
+    const length = factArr.length;
+    const factsToGo = [];
+    do {
+      let randomFact = '';
+      do {
+        const factIndex = Math.floor(Math.random() * length);
+        randomFact = factArr[factIndex];
+      } while (factsToGo.indexOf(randomFact) >= 0);
+      factsToGo.push(randomFact);
+    } while (factsToGo.length < number);
+    speechOutput = 'Here is your list of ' + number + ' facts about Monica and Adam: ';
+    factsToGo.map(fact => {
+      speechOutput += "Fact: " + fact + '  ';
+    })
+    this.emit(':tell', speechOutput);
   },
   'PersonFactIntent': function () {
     const who = this.event.request.intent.slots.who.value.toLowerCase();
