@@ -12,7 +12,26 @@ const THATS_ALL_MESSAGE = 'That is all of the interesting information that I cur
 
 const data = {
   "adam": [
+    "Adam, along with a cadre of young dynamic filmmakers and actors, participated in filming the Halloween cult classic “Debra's Bones”.  It was shot at Lord Noah Gardy's Southampton home, and he tired of our antics within 15 minutes.",
+    "Adam can drop the accent whenever he damn well pleases. All of his friends have seen him do it.",
+    "Adam one time came within an inch of crashing his car and killing us because he was too distracted by the Red Lobster Cheddar Bay Biscuits he and his friend Nick had just picked up.",
+    "Adam once sat under a tree in an NYC park and a bird shat on his head not once, not twice, but THREE times. Monica refused to touch him shortly after.",
+    "There is nothing Adam hates more than the song Africa by Toto.", 
+    "Adam was so constipated for nearly a week that he changed his diet entirely to prunes...needless to say, there followed a memorable day at the office later that week.",
+    "Adam briefly turned Catholic for a few days because he was forced by Dom to play a religious character in one of Dom's films.",
+    "The greatest mystery of Adam is that he loves to pee outside any chance he gets.",
+    "Adam once almost got into a bar fight with a bunch of 40-year-old men because he felt they were being disrespectful to a woman. She ended up being the dude's ex wife.",
+    "Adam has a tattoo of his favorite camera lens. Ask him about it, he will LOVE to explain it to you.",
+    "Adam faked a neck injury for an entire year in High School to get out of Gym class.",
+    "Adam went goth for a month because black is slimming. ",
+    "In high school, Adam used to beg for quarters just to buy a bowl of rice from Tea Garden.",
     "Adam won a prize for being a beautiful baby and smiling angelically.",
+    "Monica once knocked out Adam on a dare.",
+    "Adam wanted to be Jack Black so badly in middle school and High School that he dressed like him and lived by the Tenacious D album.",
+    "We used to call Adam 'lunchbox' because he was obsessed with Kevin Smith.", 
+    "Adam had spiked hair, a mohawk, and green hair in middle school.",
+    "While Adam was at High School, he also wore black goth pants with massive chains on it.",
+    "Up until high school, Adam didn't have a British accent, then when it became cool it magically came back.",
     "Adam's middle name is Nathan - named after his great grandfather Nat.",
     "Adam was once a proud Junior Hornet who attended every Watford FC Saturday soccer game. He was born in the hospital next door to Vicarage Road, the sacred home of Watford FC.",
     "Adam wanted to enroll at West Point to become a Power Ranger.",
@@ -28,6 +47,9 @@ const data = {
     "Adam was awarded the prestigious Northwood Preparatory School Monitors Award for his tenure as a junior school monitor during the period April to July 1998."
   ],
   "monica": [
+    "Monica's favorite movie is Titanic. She will cry if you play 'My Heart Will Go On'.",
+    "Monica's favorite band is Queen.",
+    "Monica has three tattoos.", 
     "Monica and Dani, her new mother-in-law, share a birthday.",
     "Monica was once early 2000's rap sensation Eminem’s biggest fan",
     "Monica once ordered a very bad prime rib at a Denny’s and ate it anyway.",
