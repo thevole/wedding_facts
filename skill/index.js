@@ -157,7 +157,7 @@ const handlers = {
     this.emit(':ask', speechOutput, reprompt);
   },
   'ListFactsIntent': function() {
-    console.log(this.event.request.intent.slots);
+    console.log('Number asked for: ', this.event.request.intent.slots.number.value);
     const numberSpoken = this.event.request.intent.slots.number.value;
     let number = Number.parseInt(numberSpoken);
     if (!number || number <= 0) {
