@@ -41,7 +41,7 @@ const data = {
     "Adam’s first superhero was 'Pilla the Caterpillar', a story he forced his nana to make up and tell him.",
     "Adam used to leave lethal pointy things on the bedroom floor so that when he had a bad dream and you ran into the room in the dark you would step on them and get a bleeding foot.",
     "Career choices. Before becoming a cinematographer, Adam wanted to be a doctor of snatches.",
-    "It’s Adam's fault that he had twin siblings! When his mother and father asked him if he wanted a brother or sister he said both, and he wanted to call them Jack and Jill.",
+    "It's Adam's fault that he had twin siblings! When his mother and father asked him if he wanted a brother or sister he said both, and he wanted to call them Jack and Jill.",
     "Adam drew pictures at school of all the Volerich family secrets - like the time that Jack pooped in the tub.",
     "Adam's first fries were from McDonalds in the Harlequin Center Watford. His eyes went up into his head and from then on he decided only junk food was to be eaten.",
     "Adam was awarded the prestigious Northwood Preparatory School Monitors Award for his tenure as a junior school monitor during the period April to July 1998."
@@ -139,10 +139,15 @@ const newSessionHandlers = {
       this.attributes['factsPlayed'] = [];
       this.attributes['totalFactCount'] = data['monica'].length + data['adam'].length;
     }
-    const speechOutput = "Welcome to Monica and Adam's Wonderful Wedding Celebration. " + HELP_MESSAGE;
-    const reprompt = HELP_REPROMPT;
-    this.emit(':ask', speechOutput, reprompt);
-  }
+    console.log('newSession', this.event.request);
+    if (this.event.request.intent !== undefined) {
+      this.emit(this.event.request.intent.name);
+    } else {
+      const speechOutput = "Welcome to Monica and Adam's Wonderful Wedding Celebration. " + HELP_MESSAGE;
+      const reprompt = HELP_REPROMPT;
+      this.emit(':ask', speechOutput, reprompt);
+    } 
+  } 
 };
 
 const handlers = {
@@ -173,7 +178,8 @@ const handlers = {
     factsToGo.map(fact => {
       speechOutput += "Fact: " + fact + '  ';
     })
-    this.emit(':tell', speechOutput);
+    speechOutput += FACT_TRAILER;
+    this.emit(':ask', speechOutput, HELP_REPROMPT);
   },
   'PersonFactIntent': function () {
     const who = this.event.request.intent.slots.who.value.toLowerCase();
