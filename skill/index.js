@@ -15,7 +15,7 @@ const data = {
     "Adam, along with a cadre of young dynamic filmmakers and actors, participated in filming the Halloween cult classic “Debra's Bones”.  It was shot at Lord Noah Gardy's Southampton home, and he tired of our antics within 15 minutes.",
     "Adam can drop the accent whenever he damn well pleases. All of his friends have seen him do it.",
     "Adam one time came within an inch of crashing his car and killing us because he was too distracted by the Red Lobster Cheddar Bay Biscuits he and his friend Nick had just picked up.",
-    "Adam once sat under a tree in an NYC park and a bird shat on his head not once, not twice, but THREE times. Monica refused to touch him shortly after.",
+    "Adam once sat under a tree in an NYC park and a bird pooped on his head not once, not twice, but THREE times. Monica refused to touch him shortly after.",
     "There is nothing Adam hates more than the song Africa by Toto.", 
     "Adam was so constipated for nearly a week that he changed his diet entirely to prunes...needless to say, there followed a memorable day at the office later that week.",
     "Adam briefly turned Catholic for a few days because he was forced by Dom to play a religious character in one of Dom's films.",
@@ -23,11 +23,11 @@ const data = {
     "Adam once almost got into a bar fight with a bunch of 40-year-old men because he felt they were being disrespectful to a woman. She ended up being the dude's ex wife.",
     "Adam has a tattoo of his favorite camera lens. Ask him about it, he will LOVE to explain it to you.",
     "Adam faked a neck injury for an entire year in High School to get out of Gym class.",
-    "Adam went goth for a month because black is slimming. ",
+    "Adam went all goth for a month because black is slimming. ",
     "In high school, Adam used to beg for quarters just to buy a bowl of rice from Tea Garden.",
     "Adam won a prize for being a beautiful baby and smiling angelically.",
     "Monica once knocked out Adam on a dare.",
-    "Adam wanted to be Jack Black so badly in middle school and High School that he dressed like him and lived by the Tenacious D album.",
+    "Adam wanted to be Jack Black so badly in middle school and High School that he dressed like him and lived by the words and spirit of the Tenacious D album.",
     "We used to call Adam 'lunchbox' because he was obsessed with Kevin Smith.", 
     "Adam had spiked hair, a mohawk, and green hair in middle school.",
     "While Adam was at High School, he also wore black goth pants with massive chains on it.",
@@ -63,38 +63,24 @@ const data = {
     "Monica once picked out a crazy cat for Grandma and named her Glitter.  Glitter attacked all grandma's grandkidsand had to be locked up whenever they visited!! ", 
     "Monica was reprimanded in kindergarten for yawning really loudly.  Her response was:  'but my daddy does it all the time?!'",
     "It's tough for Monica being first all the time.  At a friend's birthday party, she had a full blown brat attack because she did not get the first piece of cake.  Ok, they were toddlers, but it was still very embarrassing!!",
-
 "The most amazing moment of Monica's career as a track star was when she anchored a relay race and got the baton in last place.  She preceded to pass every single girl in front of her and won the race!  Afterwards she could not walk for months, but that's another story.",  
 "It was a very harrowing moment when she called from far western Nepal to tell her family that there had been an earthquake.  It took her a whole week to get home!  Her mom reminded her once again that there's no sense in being a martyr and that she'd accomplish more alive.  ",
 "Monica was always the adult in the family.  When her dad would throw food at the dinner table to start a food fight, she would stomp off all mad. ", 
 "Monica's most annoying habit is when her thoughts get stuck in a loop and she needs to replay the same idea over and over again.  Nobody is sure why that happens. ",
 "Monica's mom, Tassana, used to dress Monica every day and always thought that she looked cute!  One day she decided that her Mom didn't know how to dress her and Monica rebelled with a vengeance!!  Of course, it had to be Coach, Luis Vuitton, other other expensive name brands - plus hair straightening."  ,
     "Monica always needs to buy food in two’s. In the early years at Possible, she would go to Haven’s Kitchen where she would have to get two muffins. At Pret a Mangé, she would get two soups. And on it goes...",
-
     "Monica takes about five minutes to wash her hands.",
-
     "Monica owns  74 pairs of Toms shoes.",
-
     "When Monica came back from a really long stint in Nepal, she wanted to really feel like a normal person again. So she started getting manicures/pedicures, bought a Tory Burch bag and wallet, and started wearing all of these fancy skirts. She also wore heels quite often (which, of course, were also Toms).",
-
     "Monica doesn't know how to type. She types with three fingers and it's always very, very loud.",
-
     "Monica claims she hates technology and social media, and yet she is really good at tagging friends in Facebook photos. My favorite posts are when she goes out to dinner with someone; she always takes a picture of each person at the table with their food or drink.",
-
     "Monica didn't go to the gym for about 6 months only because she had to buy a new pair of sneakers. (Guess you can't wear Toms).",
-
     "Monica broke her foot in Doha tripping on a curb and then refused to use crutches or a cane. Surprisingly, when she returned to the States and saw another doctor, her fracture hadn't healed at all. ",
-
     "When Monica lived in Doha, which was HOT, HUMID, and MORE HOT, Monica ate HOT pasta every day for lunch for a month.",
-
     "The first night Monica arrived at her beach hotel in Doha, Monica said 'This is where I'm going to have my honeymoon.'",
-
     "The last seven books Monica has probably read were about work and management. ",
-
     "Monica used to work for Two Degrees, an incredibly successful granola bar company that gave a portion of its proceeds to charity.",
-
     "Nobody has ever seen Monica or Adam cook once. Ever!",
-
     "Monica and her friend Laura, almost fell off a roof in Nepal doing karaoke to Lady Gaga's \"I'm on the edge.\"" 
   ]
 };
