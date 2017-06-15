@@ -42,7 +42,7 @@ const data = {
     "Career choices. Before becoming a cinematographer, Adam wanted to be a doctor of snatches.",
     "It's Adam's fault that he had twin siblings! When his mother and father asked him if he wanted a brother or sister he said both, and he wanted to call them Jack and Jill.",
     "Adam drew pictures at school of all the Volerich family secrets - like the time that Jack pooped in the tub.",
-    "Adam's first fries were from McDonalds in the Harlequin Center Watford. His eyes went up into his head and from then on he decided only junk food was to be eaten.",
+    "Adam's first fries were from McDonalds in the Harlequin Center Watford. On first taste, his eyes rolled up into his head and from then on he decided to only eat junk food.",
     "Adam was awarded the prestigious Northwood Preparatory School Monitors Award for his tenure as a junior school monitor during the period April to July 1998."
   ],
   "monica": [
@@ -64,11 +64,11 @@ const data = {
     "Monica was reprimanded in kindergarten for yawning really loudly.  Her response was:  'but my daddy does it all the time?!'",
     "It's tough for Monica being first all the time.  At a friend's birthday party, she had a full blown brat attack because she did not get the first piece of cake.  Ok, they were toddlers, but it was still very embarrassing!!",
 "The most amazing moment of Monica's career as a track star was when she anchored a relay race and got the baton in last place.  She preceded to pass every single girl in front of her and won the race!  Afterwards she could not walk for months, but that's another story.",  
-"It was a very harrowing moment when she called from far western Nepal to tell her family that there had been an earthquake.  It took her a whole week to get home!  Her mom reminded her once again that there's no sense in being a martyr and that she'd accomplish more alive.  ",
+"It was a very harrowing moment when Monica called from far western Nepal to tell her family that there had been an earthquake.  It took her a whole week to get home!  Her mom, <phoneme alphabet='ipa' ph='tæssənə'>Tassana</phoneme>, reminded her once again that there's no sense in being a martyr and that she'd accomplish more alive.  ",
 "Monica was always the adult in the family.  When her dad would throw food at the dinner table to start a food fight, she would stomp off all mad. ", 
 "Monica's most annoying habit is when her thoughts get stuck in a loop and she needs to replay the same idea over and over again.  Nobody is sure why that happens. ",
-"Monica's mom, <phoneme alphabet='ipa' ph='tæssənə'>Tassana</phoneme>, used to dress Monica every day and always thought that she looked cute!  One day she decided that her Mom didn't know how to dress her and Monica rebelled with a vengeance!!  Of course, it had to be Coach, <phoneme alphabet='ipa' ph='lui'>Luis</phoneme> Vuitton, and other expensive name brands - plus, of course, hair straightening."  ,
-    "Monica always needs to buy food in two’s. In the early years at Possible, she would go to Haven’s Kitchen where she would have to get two muffins. At Pret a Mangé, she would get two soups. And on it goes...",
+"Monica's mom, <phoneme alphabet='ipa' ph='tæssənə'>Tassana</phoneme>, used to dress Monica every day and always thought that she looked cute!  One day Monica decided that her Mom didn't know how to dress her and Monica rebelled with a vengeance!!  Of course, it had to be Coach, <phoneme alphabet='ipa' ph='lui'>Luis</phoneme> Vuitton, and other expensive name brands - plus, of course, hair straightening."  ,
+    "Monica always needs to buy food in two’s. In the early years at Possible, she would go to Haven’s Kitchen where she would have to get two muffins. At Pret a <phoneme alphabet='ipa' ph='ˈmɑd͡ʒʒe'>Mangé</phoneme>, she would get two <phoneme alphabet='ipa' ph='sups'>soups</phoneme>. And so on and so on...",
     "Monica takes about five minutes to wash her hands.",
     "At last count, Monica owns  74 pairs of Toms shoes. Maybe more if another pair are delivered today.",
     "When Monica came back from a really long stint in Nepal, she wanted to really feel like a normal person again. So she started getting manicures and pedicures, bought a Tory Burch bag and wallet, and started wearing all of these fancy skirts. She also wore heels quite often (which, of course, were also Toms).",
@@ -152,14 +152,12 @@ const handlers = {
     const factArr = data['adam'].concat(data['monica']);
     const length = factArr.length;
     const factsToGo = [];
-    const played = this.attributes['factsPlayed'];
     do {
       let randomFact = '';
       do {
         const factIndex = Math.floor(Math.random() * length);
         randomFact = factArr[factIndex];
-      } while (factsToGo.indexOf(randomFact) >= 0 && played.indexOf(randomFact) >= 0);
-      this.attributes['factsPlayed'].push(randomFact);
+      } while (factsToGo.indexOf(randomFact));
       factsToGo.push(randomFact);
     } while (factsToGo.length < number);
     speechOutput = 'Here is your list of ' + number + ' facts about Monica and Adam: ';
