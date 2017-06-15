@@ -157,7 +157,7 @@ const handlers = {
       do {
         const factIndex = Math.floor(Math.random() * length);
         randomFact = factArr[factIndex];
-      } while (factsToGo.indexOf(randomFact));
+      } while (factsToGo.indexOf(randomFact) >= 0);
       factsToGo.push(randomFact);
     } while (factsToGo.length < number);
     speechOutput = 'Here is your list of ' + number + ' facts about Monica and Adam: ';
