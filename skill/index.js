@@ -12,7 +12,7 @@ const THATS_ALL_MESSAGE = 'That is all of the interesting information that I cur
 
 const data = {
   "adam": [
-    "Adam, along with a cadre of young dynamic filmmakers and actors, participated in filming the Halloween cult classic “Debra's Bones”.  It was shot at Lord Noah Gardy's Southampton home, and he tired of our antics within 15 minutes.",
+    "Adam, along with a cadre of young dynamic filmmakers and actors, participated in filming the Halloween cult classic “Debra's Bones”.  It was shot at Lord Noah Gardy's Southampton home, and Noah tired of our antics within 15 minutes.",
     "Adam can drop the accent whenever he damn well pleases. All of his friends have seen him do it.",
     "Adam one time came within an inch of crashing his car and killing all of the occupants because he was too distracted by the Red Lobster Cheddar Bay Biscuits that he and his friend Nick had just picked up.",
     "Adam once sat under a tree in an New York City park and a bird pooped on his head not once, not twice, but THREE times. Of course, Monica refused to touch him shortly after.",
