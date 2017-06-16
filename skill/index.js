@@ -46,7 +46,7 @@ const data = {
     "Adam was awarded the prestigious Northwood Preparatory School Monitors Award for his tenure as a junior school monitor during the period April to July 1998."
   ],
   "monica": [
-    "Monica, Diana and Ella once used a ouija board to contact the spirit of Freddie Mercury and she believes that she spoke to him (in abbreviated form).",
+    "Monica, Diana and Ella once used a ouija board to contact the spirit of Freddie Mercury and she believes that she spoke to him (cryptically and in abbreviated form of course).",
     "Monica's favorite movie is Titanic. She will cry if you play 'My Heart Will Go On'.",
     "Monica's favorite band is Queen.",
     "Monica has three tattoos.", 
